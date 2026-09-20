@@ -30,33 +30,27 @@ const palette: Array<{ type: ComponentType; icon: string; hint: string }> = [
   { type: '地面', icon: '◫', hint: '底板 / 面层' },
 ]
 
+const floorOptions = [1, 2, 3]
+
 const starterItems: BuildingItem[] = [
-  { id: 1, type: '地面', name: '一层底板', floor: 1, x: 0, y: 0, z: 0, width: 12, height: .18, depth: 8, color: '#dfeaf6', material: '混凝土', visible: true },
-  { id: 2, type: '墙体', name: '北立面外墙', floor: 1, x: 0, y: 2.8, z: -3.8, width: 12, height: 5.6, depth: .22, color: '#f9fbff', material: '混凝土', visible: true },
-  { id: 3, type: '墙体', name: '南立面外墙', floor: 1, x: 0, y: 2.8, z: 3.8, width: 12, height: 5.6, depth: .22, color: '#f9fbff', material: '混凝土', visible: true },
-  { id: 4, type: '墙体', name: '东立面外墙', floor: 1, x: 5.9, y: 2.8, z: 0, width: .22, height: 5.6, depth: 7.6, color: '#f9fbff', material: '混凝土', visible: true },
-  { id: 5, type: '墙体', name: '西立面外墙', floor: 1, x: -5.9, y: 2.8, z: 0, width: .22, height: 5.6, depth: 7.6, color: '#f9fbff', material: '混凝土', visible: true },
-  { id: 6, type: '门窗', name: '落地窗-01', floor: 1, x: 2.2, y: 1.8, z: -3.64, width: 2.4, height: 2.8, depth: .12, color: '#94d9f2', material: '玻璃', visible: true },
-  { id: 7, type: '门窗', name: '入户门', floor: 1, x: -1.8, y: 1.3, z: 3.62, width: 1.5, height: 2.6, depth: .12, color: '#b68d63', material: '木纹', visible: true },
-  { id: 8, type: '阳台', name: '客厅阳台', floor: 1, x: 1.8, y: 1.2, z: 4.35, width: 4.8, height: .24, depth: 1.6, color: '#cfe8f7', material: '铝合金', visible: true },
-  { id: 9, type: '屋顶', name: '平屋顶', floor: 1, x: 0, y: 5.6, z: 0, width: 12.2, height: .28, depth: 7.8, color: '#dfe6f2', material: '钢结构', visible: true },
+  { id: 1, type: '地面', name: '一层底板', floor: 1, x: 0, y: 0, z: 0, width: 12, height: 0.18, depth: 8, color: '#dfeaf6', material: '混凝土', visible: true },
+  { id: 2, type: '墙体', name: '北立面外墙', floor: 1, x: 0, y: 2.8, z: -3.8, width: 12, height: 5.6, depth: 0.22, color: '#f9fbff', material: '混凝土', visible: true },
+  { id: 3, type: '墙体', name: '南立面外墙', floor: 1, x: 0, y: 2.8, z: 3.8, width: 12, height: 5.6, depth: 0.22, color: '#f9fbff', material: '混凝土', visible: true },
+  { id: 4, type: '墙体', name: '东立面外墙', floor: 1, x: 5.9, y: 2.8, z: 0, width: 0.22, height: 5.6, depth: 7.6, color: '#f9fbff', material: '混凝土', visible: true },
+  { id: 5, type: '墙体', name: '西立面外墙', floor: 1, x: -5.9, y: 2.8, z: 0, width: 0.22, height: 5.6, depth: 7.6, color: '#f9fbff', material: '混凝土', visible: true },
+  { id: 6, type: '门窗', name: '落地窗-01', floor: 1, x: 2.2, y: 1.8, z: -3.64, width: 2.4, height: 2.8, depth: 0.12, color: '#94d9f2', material: '玻璃', visible: true },
+  { id: 7, type: '门窗', name: '入户门', floor: 1, x: -1.8, y: 1.3, z: 3.62, width: 1.5, height: 2.6, depth: 0.12, color: '#b68d63', material: '木纹', visible: true },
+  { id: 8, type: '阳台', name: '客厅阳台', floor: 1, x: 1.8, y: 1.2, z: 4.35, width: 4.8, height: 0.24, depth: 1.6, color: '#cfe8f7', material: '铝合金', visible: true },
+  { id: 9, type: '屋顶', name: '平屋顶', floor: 1, x: 0, y: 5.6, z: 0, width: 12.2, height: 0.28, depth: 7.8, color: '#dfe6f2', material: '钢结构', visible: true },
   { id: 10, type: '楼梯', name: '旋转楼梯', floor: 1, x: -3.5, y: 0.9, z: -1.6, width: 2.2, height: 2.8, depth: 1.2, color: '#cad4e0', material: '钢结构', visible: true },
-  { id: 11, type: '墙体', name: '内隔墙-01', floor: 1, x: 0, y: 2.8, z: 1.2, width: 4.8, height: 5.6, depth: .14, color: '#f6f9fd', material: '混凝土', visible: true },
-  { id: 12, type: '地面', name: '二层结构板', floor: 2, x: 0, y: 5.8, z: 0, width: 12, height: .2, depth: 8, color: '#dfeaf6', material: '混凝土', visible: true },
-  { id: 13, type: '墙体', name: '二层南墙', floor: 2, x: 0, y: 8.4, z: 3.8, width: 12, height: 5.6, depth: .18, color: '#f9fbff', material: '混凝土', visible: true },
-  { id: 14, type: '门窗', name: '二层窗-101', floor: 2, x: 3.4, y: 8.1, z: -3.5, width: 2.2, height: 2.6, depth: .12, color: '#9ae0fb', material: '玻璃', visible: true },
-  { id: 15, type: '屋顶', name: '二层屋面', floor: 2, x: 0, y: 11.2, z: 0, width: 12.2, height: .3, depth: 7.8, color: '#e0e6f5', material: '钢结构', visible: true },
+  { id: 11, type: '墙体', name: '内隔墙-01', floor: 1, x: 0, y: 2.8, z: 1.2, width: 4.8, height: 5.6, depth: 0.14, color: '#f6f9fd', material: '混凝土', visible: true },
+  { id: 12, type: '地面', name: '二层结构板', floor: 2, x: 0, y: 5.8, z: 0, width: 12, height: 0.2, depth: 8, color: '#dfeaf6', material: '混凝土', visible: true },
+  { id: 13, type: '墙体', name: '二层南墙', floor: 2, x: 0, y: 8.4, z: 3.8, width: 12, height: 5.6, depth: 0.18, color: '#f9fbff', material: '混凝土', visible: true },
+  { id: 14, type: '门窗', name: '二层窗-101', floor: 2, x: 3.4, y: 8.1, z: -3.5, width: 2.2, height: 2.6, depth: 0.12, color: '#9ae0fb', material: '玻璃', visible: true },
+  { id: 15, type: '屋顶', name: '二层屋面', floor: 2, x: 0, y: 11.2, z: 0, width: 12.2, height: 0.3, depth: 7.8, color: '#e0e6f5', material: '钢结构', visible: true },
 ]
 
-function Scene({
-  items,
-  selectedId,
-  onSelect,
-}: {
-  items: BuildingItem[]
-  selectedId: number
-  onSelect: (id: number) => void
-}) {
+function Scene({ items, selectedId, onSelect }: { items: BuildingItem[]; selectedId: number; onSelect: (id: number) => void }) {
   const mountRef = useRef<HTMLDivElement | null>(null)
 
   useEffect(() => {
@@ -106,15 +100,14 @@ function Scene({
     controls.maxPolarAngle = Math.PI / 2.1
 
     const meshes: THREE.Mesh[] = []
-    let activeMesh: THREE.Mesh | null = null
 
     const addMesh = (item: BuildingItem, geometry: THREE.BufferGeometry, baseColor: string) => {
       const material = new THREE.MeshStandardMaterial({
         color: baseColor,
         transparent: item.type === '门窗',
         opacity: item.type === '门窗' ? 0.8 : 1,
-        roughness: item.type === '门窗' ? 0.1 : 0.55,
-        metalness: item.type === '门窗' ? 0.2 : 0.05,
+        roughness: item.type === '门窗' ? 0.12 : 0.55,
+        metalness: item.type === '门窗' ? 0.25 : 0.04,
       })
 
       const mesh = new THREE.Mesh(geometry, material)
@@ -124,15 +117,13 @@ function Scene({
       mesh.userData = { itemId: item.id }
       scene.add(mesh)
       meshes.push(mesh)
-      if (item.id === selectedId) activeMesh = mesh
     }
 
     items.forEach((item) => {
       if (!item.visible) return
 
       if (item.type === '楼梯') {
-        const steps = 7
-        for (let i = 0; i < steps; i += 1) {
+        for (let i = 0; i < 7; i += 1) {
           const step = new THREE.Mesh(
             new THREE.BoxGeometry(1.8, 0.12, 0.52),
             new THREE.MeshStandardMaterial({ color: '#d9e4f5', roughness: 0.75 }),
@@ -143,13 +134,7 @@ function Scene({
           step.userData = { itemId: item.id }
           scene.add(step)
           meshes.push(step)
-          if (item.id === selectedId) activeMesh = step
         }
-        return
-      }
-
-      if (item.type === '门窗') {
-        addMesh(item, new THREE.BoxGeometry(item.width, item.height, item.depth), item.color)
         return
       }
 
@@ -175,18 +160,12 @@ function Scene({
     const animate = () => {
       requestAnimationFrame(animate)
       controls.update()
-      if (activeMesh) {
-        meshes.forEach((mesh) => {
-          const material = mesh.material as THREE.MeshStandardMaterial
-          if (mesh.userData.itemId === selectedId) {
-            material.emissive = new THREE.Color('#dfeaff')
-            material.emissiveIntensity = 0.35
-          } else {
-            material.emissive = new THREE.Color('#000000')
-            material.emissiveIntensity = 0
-          }
-        })
-      }
+      meshes.forEach((mesh) => {
+        const material = mesh.material as THREE.MeshStandardMaterial
+        const isSelected = mesh.userData.itemId === selectedId
+        material.emissive = new THREE.Color(isSelected ? '#dfeaff' : '#000000')
+        material.emissiveIntensity = isSelected ? 0.35 : 0
+      })
       renderer.render(scene, camera)
     }
 
@@ -219,14 +198,26 @@ function App() {
   const [activeTab, setActiveTab] = useState('建筑')
   const [isSaved, setIsSaved] = useState(false)
 
-  const floorOptions = useMemo(() => [1, 2, 3], [])
-
   const visibleItems = useMemo(
     () => items.filter((item) => item.floor === currentFloor || item.type === '地面'),
     [currentFloor, items],
   )
 
-  const selected = items.find((item) => item.id === selectedId) ?? items[0]
+  const selected = items.find((item) => item.id === selectedId) ?? items[0] ?? {
+    id: 0,
+    type: '墙体',
+    name: '未选中构件',
+    floor: 1,
+    x: 0,
+    y: 0,
+    z: 0,
+    width: 1,
+    height: 1,
+    depth: 0.2,
+    color: '#dfeaf6',
+    material: '混凝土',
+    visible: true,
+  }
 
   const updateSelected = <K extends keyof BuildingItem>(key: K, value: BuildingItem[K]) => {
     setItems((prev) =>
@@ -236,39 +227,41 @@ function App() {
 
   const addItem = (type: ComponentType) => {
     const nextId = Date.now()
-    const base: Partial<BuildingItem> = {
-      type,
-      floor: currentFloor,
-      name: `${type}-${String(items.length).padStart(2, '0')}`,
-      x: 0,
-      y: type === '屋顶' ? 5.5 : type === '门窗' ? 1.8 : 2.2,
-      z: 0,
-      width: type === '门窗' ? 2.1 : type === '阳台' ? 4.2 : 3.2,
-      height: type === '门窗' ? 2.6 : type === '阳台' ? 0.25 : 5.2,
-      depth: type === '阳台' ? 1.4 : type === '门窗' ? 0.12 : 0.2,
-      color: type === '门窗' ? '#90dff8' : '#f9fbff',
-      material: type === '门窗' ? '玻璃' : type === '阳台' ? '铝合金' : '混凝土',
-      visible: true,
+    const baseMap: Record<ComponentType, Partial<BuildingItem>> = {
+      地面: { y: 0, width: 12, height: 0.18, depth: 8, color: '#dfeaf6', material: '混凝土' },
+      墙体: { y: 2.8, width: 3.2, height: 5.2, depth: 0.22, color: '#f9fbff', material: '混凝土' },
+      门窗: { y: 1.8, width: 2.1, height: 2.6, depth: 0.12, color: '#90dff8', material: '玻璃' },
+      楼梯: { y: 0.9, width: 2.2, height: 2.8, depth: 1.2, color: '#cad4e0', material: '钢结构' },
+      阳台: { y: 1.2, width: 4.2, height: 0.25, depth: 1.4, color: '#cfe8f7', material: '铝合金' },
+      屋顶: { y: 5.6, width: 12.2, height: 0.28, depth: 7.8, color: '#dfe6f2', material: '钢结构' },
     }
+
+    const base = baseMap[type]
 
     const newItem: BuildingItem = {
       id: nextId,
       type,
-      name: base.name ?? `${type}-01`,
-      floor: base.floor ?? currentFloor,
-      x: base.x ?? 0,
+      name: `${type}-${String(items.length + 1).padStart(2, '0')}`,
+      floor: currentFloor,
+      x: 0,
       y: base.y ?? 2,
-      z: base.z ?? 0,
+      z: 0,
       width: base.width ?? 2,
       height: base.height ?? 2,
       depth: base.depth ?? 0.2,
       color: base.color ?? '#f9fbff',
       material: base.material ?? '混凝土',
-      visible: base.visible ?? true,
+      visible: true,
     }
 
     setItems((prev) => [...prev, newItem])
     setSelectedId(nextId)
+  }
+
+  const removeSelected = () => {
+    if (!selected || selected.id === 0) return
+    setItems((prev) => prev.filter((item) => item.id !== selected.id))
+    setSelectedId(items[0]?.id ?? 0)
   }
 
   return (
@@ -301,12 +294,7 @@ function App() {
           </div>
           <div className="palette-grid">
             {palette.map((entry) => (
-              <button
-                key={entry.type}
-                className="palette-card"
-                onClick={() => addItem(entry.type)}
-                title={entry.hint}
-              >
+              <button key={entry.type} className="palette-card" onClick={() => addItem(entry.type)} title={entry.hint}>
                 <span>{entry.icon}</span>
                 <strong>{entry.type}</strong>
               </button>
@@ -326,7 +314,9 @@ function App() {
                 className={selectedId === item.id ? 'tree-item selected' : 'tree-item'}
                 onClick={() => setSelectedId(item.id)}
               >
-                <span className="tree-icon">{item.type === '墙体' ? '▥' : item.type === '门窗' ? '▣' : item.type === '楼梯' ? '⌁' : item.type === '阳台' ? '▱' : item.type === '屋顶' ? '⌂' : '◫'}</span>
+                <span className="tree-icon">
+                  {item.type === '墙体' ? '▥' : item.type === '门窗' ? '▣' : item.type === '楼梯' ? '⌁' : item.type === '阳台' ? '▱' : item.type === '屋顶' ? '⌂' : '◫'}
+                </span>
                 <span>{item.name}</span>
                 <small>{item.floor}F</small>
               </button>
@@ -349,7 +339,7 @@ function App() {
             <button className="soft-btn">←</button>
             <button className="soft-btn">→</button>
             <div className="divider" />
-            <button className="primary-btn" onClick={() => { setIsSaved(true); setTimeout(() => setIsSaved(false), 1200) }}>
+            <button className="primary-btn" onClick={() => { setIsSaved(true); window.setTimeout(() => setIsSaved(false), 1200) }}>
               {isSaved ? '已保存 ✓' : '保存方案'}
             </button>
             <button className="ghost-btn">导出模型</button>
@@ -385,10 +375,7 @@ function App() {
         </div>
 
         <div className="status-row">
-          <div className="status-item">
-            <span className="online-dot" />
-            实时协同
-          </div>
+          <div className="status-item"><span className="online-dot" /> 实时协同</div>
           <div className="status-item">单位：米</div>
           <div className="status-item">高度：3.2m</div>
           <div className="status-item">构件总数：{items.length}</div>
@@ -482,8 +469,41 @@ function App() {
           </label>
         </div>
 
+        <div className="collab-card">
+          <div className="panel-title-row narrow">
+            <span>协同状态</span>
+            <span className="status-pill">5 关注</span>
+          </div>
+          <div className="member-list">
+            <div className="member-row">
+              <span className="avatar avatar-blue">Z</span>
+              <div>
+                <strong>周娜</strong>
+                <small>结构审核</small>
+              </div>
+              <span className="tag green">已确认</span>
+            </div>
+            <div className="member-row">
+              <span className="avatar avatar-purple">L</span>
+              <div>
+                <strong>李明</strong>
+                <small>机电协调</small>
+              </div>
+              <span className="tag orange">待审核</span>
+            </div>
+            <div className="member-row">
+              <span className="avatar avatar-gold">Y</span>
+              <div>
+                <strong>杨帆</strong>
+                <small>方案优化</small>
+              </div>
+              <span className="tag blue">在线</span>
+            </div>
+          </div>
+        </div>
+
         <div className="action-bar">
-          <button className="soft-danger" onClick={() => setItems((prev) => prev.filter((item) => item.id !== selectedId))}>删除</button>
+          <button className="soft-danger" onClick={removeSelected}>删除</button>
           <button className="primary-btn compact" onClick={() => addItem(selected.type)}>复制构件</button>
         </div>
       </aside>
